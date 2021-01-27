@@ -2,7 +2,7 @@ import lang_enUS from './en-us'
 import lang_pl from './pl'
 import lang_zhHans from './zh-hans'
 import lang_ptBr from './pt-br'
-import lang_fr from './fr'
+import lang_fr from './fr-FR'
 
 const langList = {
   'en-us': lang_enUS,
@@ -11,7 +11,7 @@ const langList = {
   'zh-hans': lang_zhHans,
   'pt-br': lang_ptBr,
   // eslint-disable-next-line quote-props
-  'fr': lang_fr
+  'fr-FR': lang_fr
 }
 
 // use this const as initial language setting in demo/testing purposes (should be dynamic BTW, currently it comes from quasar.conf.js):

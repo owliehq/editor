@@ -1,5 +1,5 @@
 export default {
-  isoName: 'fr',
+  isoName: 'fr-FR',
   nativeName: 'Français (FR)',
   diagram: {
     name: 'Diagramme de texte',

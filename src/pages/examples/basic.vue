@@ -181,7 +181,7 @@ export default {
     }
   },
   mounted () {
-    this.$o.lang.set('fr')
+    this.$o.lang.set('fr-FR')
     // console.log('editor', this.$refs.editor.editor)
   },
   deactivated () {
