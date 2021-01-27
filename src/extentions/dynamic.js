@@ -27,7 +27,7 @@ import {
   Placeholder,
   Focus,
   HorizontalRule,
-  TrailingNode,
+  TrailingNode
   // Image
 } from 'tiptap-extensions'
 
@@ -54,6 +54,7 @@ import {
   OEmbed,
   OInsertHtml,
   OLink,
+  OwlieImageDrag
 } from 'src/extentions'
 
 const classes = {
@@ -102,11 +103,12 @@ const classes = {
   OImage,
   OEmbed,
   OInsertHtml,
-  OLink
+  OLink,
+  OwlieImageDrag
 }
 
 class DynamicClass {
-  constructor (className, opts) {
+  constructor(className, opts) {
     return new classes[className](opts)
   }
 }

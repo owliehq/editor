@@ -56,6 +56,8 @@ export default {
           'Table',
           'Link',
 
+          'OwlieImageDrag',
+
           // QuasarTipTap
           // 'OTitle',
           // 'ODoc',
