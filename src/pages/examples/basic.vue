@@ -12,9 +12,7 @@
       </header>
       <section class="row col-10 q-pa-md">
         <quasar-tiptap ref="editor" v-bind="options" @update="onUpdate">
-          <div slot="footer">
-            This is footer.
-          </div>
+          <div slot="footer">This is footer.</div>
         </quasar-tiptap>
       </section>
     </section>
@@ -23,9 +21,7 @@
 
 <script>
 import { QuasarTiptap } from 'src/index'
-import {
-  Placeholder,
-} from 'tiptap-extensions'
+import { Placeholder } from 'tiptap-extensions'
 
 import { RecommendedExtensions } from 'src/extentions'
 import { BasicFeaturesArticle, BasicFeaturesArticleJson } from 'src/data/article'
@@ -36,7 +32,7 @@ import { DEFAULT_LOCALE } from 'src/i18n'
 
 export default {
   name: 'page-quasar-tiptap-basic',
-  data () {
+  data() {
     return {
       options: {
         content: BasicFeaturesArticle,
@@ -83,23 +79,17 @@ export default {
           'OEmbed',
           new Placeholder({
             showOnlyCurrent: false,
-            emptyNodeText: node => {
+            emptyNodeText: (node) => {
               if (node.type.name === 'title') {
                 return 'Title'
               }
               return 'Content'
             }
-          }),
+          })
         ],
-        tableToolbar: [
-          'bold',
-          'italic',
-          'table',
-          'font-family',
-          'fore-color',
-          'back-color'
-        ],
-        toolbar: [ // 1.name 2.object 3.component
+        tableToolbar: ['bold', 'italic', 'table', 'font-family', 'fore-color', 'back-color'],
+        toolbar: [
+          // 1.name 2.object 3.component
           {
             name: 'add-more', // use object with options
             type: 'menu',
@@ -121,11 +111,7 @@ export default {
             name: 'text-format-dropdown',
             type: 'menu',
             options: {
-              list: [
-                'underline',
-                'strike',
-                'code',
-              ]
+              list: ['underline', 'strike', 'code']
             }
           },
           'separator',
@@ -149,7 +135,7 @@ export default {
           'photo',
           'table',
           'separator',
-          'print',
+          'print'
         ],
         bubble: [
           'bold',
@@ -161,7 +147,7 @@ export default {
           'separator',
           'link',
           'separator',
-          'align-group',
+          'align-group'
         ]
       },
       json: '',
@@ -173,50 +159,49 @@ export default {
     OLinkBtn
   },
   methods: {
-    onUpdate ({ state, getJSON, getHTML }) {
+    onUpdate({ state, getJSON, getHTML }) {
       this.json = getJSON()
       this.html = getHTML()
       console.log('html', this.html)
+
       // console.log('json', JSON.stringify(this.json))
     }
   },
-  mounted () {
-    this.$o.lang.set('zh-hans')
+  mounted() {
+    this.$o.lang.set('en-us')
     // console.log('editor', this.$refs.editor.editor)
   },
-  deactivated () {
-  },
-  beforeDestroy () {
-  }
+  deactivated() {},
+  beforeDestroy() {}
 }
 </script>
 
 <style lang="stylus">
-  .page-quasar-tiptap-basic {
-    .banner {
-      position relative
-      height 100px
+.page-quasar-tiptap-basic {
+  .banner {
+    position: relative;
+    height: 100px;
 
-      .options {
-        position absolute
-        bottom 0
-        height 40px
-        padding 0 1rem
-      }
-    }
-
-    .tiptap {
-      border solid 1px #eeeeee
-      border-radius 6px
-    }
-
-    .editor-scroll-area {
-      position absolute
-      top 40px
-      left 0
-      right 0
-      bottom 0
-      background #f7f8fa
+    .options {
+      position: absolute;
+      bottom: 0;
+      height: 40px;
+      padding: 0 1rem;
     }
   }
+
+  .tiptap {
+    border: solid 1px #eeeeee;
+    border-radius: 6px;
+  }
+
+  .editor-scroll-area {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #f7f8fa;
+  }
+}
 </style>

@@ -10,27 +10,18 @@ module.exports = function (ctx) {
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
     // https://quasar.dev/quasar-cli/cli-documentation/boot-files
-    boot: [
-      'i18n',
-      'axios'
-    ],
+    boot: ['i18n', 'axios'],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
-    css: [
-      'app.styl'
-    ],
+    css: ['app.styl'],
 
     // https://github.com/quasarframework/quasar/tree/dev/extras
-    extras: [
-      'roboto-font',
-      'material-icons',
-      'mdi-v5'
-    ],
+    extras: ['roboto-font', 'material-icons', 'mdi-v5'],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework
     framework: {
       iconSet: 'material-icons', // Quasar icon set
-      lang: DEFAULT_LOCALE, // Quasar language pack
+      lang: 'en-us', // Quasar language pack
 
       // Possible values for "all":
       // * 'auto' - Auto-import needed Quasar components & directives
@@ -68,22 +59,13 @@ module.exports = function (ctx) {
         'QInput',
         'QCheckbox',
         'QToggle',
-        'QSpinner',
+        'QSpinner'
       ],
 
-      directives: [
-        'Ripple',
-        'ClosePopup'
-      ],
+      directives: ['Ripple', 'ClosePopup'],
 
       // Quasar plugins
-      plugins: [
-        'Meta',
-        'Notify',
-        'Dialog',
-        'AppFullscreen',
-        'Loading'
-      ]
+      plugins: ['Meta', 'Notify', 'Dialog', 'AppFullscreen', 'Loading']
     },
 
     // https://quasar.dev/quasar-cli/cli-documentation/supporting-ie
@@ -108,7 +90,7 @@ module.exports = function (ctx) {
       // extractCSS: false,
 
       // https://quasar.dev/quasar-cli/cli-documentation/handling-webpack
-      extendWebpack (cfg) {
+      extendWebpack(cfg) {
         cfg.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
@@ -196,13 +178,11 @@ module.exports = function (ctx) {
 
       packager: {
         // https://github.com/electron-userland/electron-packager/blob/master/docs/api.md#options
-
         // OS X / Mac App Store
         // appBundleId: '',
         // appCategoryType: '',
         // osxSign: '',
         // protocol: 'myapp://path',
-
         // Windows only
         // win32metadata: { ... }
       },
@@ -216,7 +196,7 @@ module.exports = function (ctx) {
       // More info: https://quasar.dev/quasar-cli/developing-electron-apps/node-integration
       nodeIntegration: true,
 
-      extendWebpack (cfg) {
+      extendWebpack(cfg) {
         // do something with Electron main process Webpack cfg
         // chainWebpack also available besides this extendWebpack
       }
