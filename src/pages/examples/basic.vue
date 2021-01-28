@@ -1,9 +1,7 @@
 <template>
   <q-page class="page-quasar-tiptap-basic">
-    <section class="row col-12 justify-center">
-      <section class="row col-10 q-pa-md">
-        <quasar-tiptap ref="editor" v-bind="options" @update="onUpdate" />
-      </section>
+    <section class="row">
+      <quasar-tiptap class="col-12" ref="editor" v-bind="options" @update="onUpdate" />
     </section>
   </q-page>
 </template>
@@ -12,8 +10,6 @@
 import { QuasarTiptap } from 'src/index'
 import { Placeholder } from 'tiptap-extensions'
 
-import { BasicFeaturesArticle } from 'src/data/article'
-
 import OLinkBtn from 'src/components/buttons/OLinkBtn'
 
 export default {
@@ -21,7 +17,7 @@ export default {
   data() {
     return {
       options: {
-        content: BasicFeaturesArticle,
+        content: '',
         editable: true,
         showToolbar: true,
         showBubble: true,

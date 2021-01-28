@@ -1,4 +1,3 @@
-
 const routes = [
   {
     path: '/',
@@ -6,11 +5,8 @@ const routes = [
     children: [
       { path: '', component: () => import('pages/examples/basic.vue') },
       { path: 'examples/basic', component: () => import('pages/examples/basic.vue') },
-      { path: 'examples/readonly', component: () => import('pages/examples/readonly.vue') },
       { path: 'examples/all', component: () => import('pages/examples/all.vue') },
-      { path: 'tiptap/basic', component: () => import('pages/tiptap/basic/index.vue') },
-      { path: 'tiptap/test1', component: () => import('pages/tiptap/basic/index.vue') },
-      { path: 'tiptap/test2', component: () => import('pages/tiptap/basic/index.vue') },
+      { path: 'tiptap/basic', component: () => import('pages/tiptap/basic/index.vue') }
     ]
   }
 ]
