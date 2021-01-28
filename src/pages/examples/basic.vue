@@ -1,19 +1,8 @@
 <template>
   <q-page class="page-quasar-tiptap-basic">
     <section class="row col-12 justify-center">
-      <header class="row col-12 justify-center items-center bg-blue-1 text-blue banner">
-        <span class="text-h3">Basic</span>
-
-        <div class="row col-12 options">
-          <q-toggle v-model="options.editable" label="Editable" />
-          <q-toggle v-model="options.showToolbar" label="Toolbar" />
-          <q-toggle v-model="options.showBubble" label="Menu Bubble" />
-        </div>
-      </header>
       <section class="row col-10 q-pa-md">
-        <quasar-tiptap ref="editor" v-bind="options" @update="onUpdate">
-          <div slot="footer">This is footer.</div>
-        </quasar-tiptap>
+        <quasar-tiptap ref="editor" v-bind="options" @update="onUpdate" />
       </section>
     </section>
   </q-page>
@@ -23,12 +12,9 @@
 import { QuasarTiptap } from 'src/index'
 import { Placeholder } from 'tiptap-extensions'
 
-import { RecommendedExtensions } from 'src/extentions'
-import { BasicFeaturesArticle, BasicFeaturesArticleJson } from 'src/data/article'
+import { BasicFeaturesArticle } from 'src/data/article'
 
 import OLinkBtn from 'src/components/buttons/OLinkBtn'
-
-import { DEFAULT_LOCALE } from 'src/i18n'
 
 export default {
   name: 'page-quasar-tiptap-basic',
@@ -181,9 +167,6 @@ export default {
 <style lang="stylus">
 .page-quasar-tiptap-basic {
   .banner {
-    position: relative;
-    height: 100px;
-
     .options {
       position: absolute;
       bottom: 0;
