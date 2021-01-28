@@ -21,8 +21,6 @@ export { default as OIframe } from 'src/extentions/Iframe'
 export { default as OKatexBlock } from 'src/extentions/KatexBlock'
 export { default as OKatexInline } from 'src/extentions/KatexInline'
 
-export { default as OwlieImageDrag } from 'src/extentions/ImageDrag'
-
 // Marks
 export { default as OBackColor } from 'src/extentions/BackColor'
 export { default as OForeColor } from 'src/extentions/ForeColor'
@@ -62,7 +60,6 @@ export const TipTapExtensions = [
 
 export const QuasarTipTapExtensions = [
   'OTitle',
-  'OwlieImageDrag',
   'ODoc',
   'OParagraph',
   'OBlockquote',

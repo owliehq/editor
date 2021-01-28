@@ -100,8 +100,7 @@ import {
   OPrint,
   OImage,
   OEmbed,
-  RecommendedExtensions,
-  OwlieImageDrag
+  RecommendedExtensions
 } from 'src/extentions'
 
 import DynamicClass from 'src/extentions/dynamic'
@@ -279,12 +278,12 @@ export default {
             case 'Link':
               extension = new DynamicClass('OLink')
               break
-            case 'OwlieImageDrag':
+            case 'OImage':
               const uploadFunction = () => {
                 return 'http://placehold.it/900x350'
               }
-
-              extension = new OwlieImageDrag({ uploadFunction })
+              extension = new OImage({ uploadFunction })
+              break
             default:
               try {
                 extension = new DynamicClass(extension)
@@ -314,7 +313,6 @@ export default {
     },
     setContent() {
       this.editor.setContent(this.getContent(), true)
-
       // Focus
       this.editor.focus()
     },

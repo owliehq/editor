@@ -53,8 +53,7 @@ import {
   OImage,
   OEmbed,
   OInsertHtml,
-  OLink,
-  OwlieImageDrag
+  OLink
 } from 'src/extentions'
 
 const classes = {
@@ -103,12 +102,13 @@ const classes = {
   OImage,
   OEmbed,
   OInsertHtml,
-  OLink,
-  OwlieImageDrag
+  OLink
 }
 
 class DynamicClass {
   constructor(className, opts) {
+
+    console.log(className)
     return new classes[className](opts)
   }
 }

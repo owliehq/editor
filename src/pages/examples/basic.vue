@@ -1,8 +1,6 @@
 <template>
   <q-page class="page-quasar-tiptap-basic">
-    <section class="row">
       <quasar-tiptap class="col-12" ref="editor" v-bind="options" @update="onUpdate" />
-    </section>
   </q-page>
 </template>
 
@@ -37,9 +35,6 @@ export default {
           'HorizontalRule',
           'Table',
           'Link',
-
-          'OwlieImageDrag',
-
           // QuasarTipTap
           // 'OTitle',
           // 'ODoc',
@@ -147,7 +142,7 @@ export default {
       this.json = getJSON()
       this.html = getHTML()
       console.log('html', this.html)
-
+      console.log('json', this.json)
       // console.log('json', JSON.stringify(this.json))
     }
   },
