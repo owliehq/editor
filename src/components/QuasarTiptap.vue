@@ -1,7 +1,12 @@
 <template>
   <section class="tiptap tiptap-editor quasar-tiptap">
     <!-- Main Toolbar -->
-    <o-editor-menu-bar :editor="editor" :toolbar="editorMenuBar" :tableToolbar="editorMenuTable" v-if="showToolbar">
+    <o-editor-menu-bar
+      :editor="editor"
+      :toolbar="editorMenuBar"
+      :tableToolbar="editorMenuTable"
+      v-if="showToolbar"
+    >
       <template slot="left">
         <slot name="toolbar-left" />
       </template>
@@ -11,15 +16,31 @@
     </o-editor-menu-bar>
 
     <!-- Main Bubble -->
-    <o-editor-menu-bubble :editor="editor" :toolbar="editorMenuBubble" :selected-cell-size="selectedCellSize" v-if="editable && showBubble" />
+    <o-editor-menu-bubble
+      :editor="editor"
+      :toolbar="editorMenuBubble"
+      :selected-cell-size="selectedCellSize"
+      v-if="editable && showBubble"
+    />
 
-    <q-scroll-area ref="editorScroll" class="editor-scroll-area" :class="`view-${pageView}`" v-if="scrollable">
+    <q-scroll-area
+      ref="editorScroll"
+      class="editor-scroll-area"
+      :class="`view-${pageView}`"
+      v-if="scrollable"
+    >
       <q-scroll-observer @scroll="onScroll" />
-      <editor-content class="editor__content o--note-preview note-step-side-editor" :editor="editor" />
+      <editor-content
+        class="editor__content o--note-preview note-step-side-editor"
+        :editor="editor"
+      />
       <slot name="footer"></slot>
     </q-scroll-area>
     <div v-else>
-      <editor-content class="editor__content o--note-preview note-step-side-editor" :editor="editor" />
+      <editor-content
+        class="editor__content o--note-preview note-step-side-editor"
+        :editor="editor"
+      />
       <slot name="footer"></slot>
     </div>
   </section>
@@ -49,7 +70,7 @@ import {
   Placeholder,
   Focus,
   HorizontalRule,
-  TrailingNode,
+  TrailingNode
   // Image
 } from 'tiptap-extensions'
 
@@ -79,7 +100,8 @@ import {
   OPrint,
   OImage,
   OEmbed,
-  RecommendedExtensions
+  RecommendedExtensions,
+  OwlieImageDrag
 } from 'src/extentions'
 
 import DynamicClass from 'src/extentions/dynamic'
@@ -91,7 +113,7 @@ import { DefaultToolbar, DefaultBubble, TableToolbar } from 'src/data/editor'
 
 export default {
   name: 'quasar-tiptap',
-  data () {
+  data() {
     return {
       // editor
       editor: null,
@@ -122,8 +144,7 @@ export default {
     editorProps: {
       type: Object,
       default: function () {
-        return {
-        }
+        return {}
       }
     },
     extensions: {
@@ -157,29 +178,28 @@ export default {
     options: {
       type: Object,
       default: function () {
-        return {
-        }
+        return {}
       }
     }
   },
   components: {
     EditorContent,
     OEditorMenuBar,
-    OEditorMenuBubble,
+    OEditorMenuBubble
   },
   computed: {
-    editorMenuBar () {
+    editorMenuBar() {
       return this.toolbar.length > 0 ? this.toolbar : DefaultToolbar
     },
-    editorMenuTable () {
+    editorMenuTable() {
       return this.tableToolbar.length > 0 ? this.tableToolbar : TableToolbar
     },
-    editorMenuBubble () {
+    editorMenuBubble() {
       return this.bubble.length > 0 ? this.bubble : DefaultBubble
     }
   },
   methods: {
-    initEditor () {
+    initEditor() {
       const customExtensions = this.generateExtensions()
       const extensions = [
         // custom
@@ -195,7 +215,7 @@ export default {
         new TrailingNode({
           node: 'paragraph',
           notAfter: ['paragraph']
-        }),
+        })
       ]
 
       this.editor = new Editor({
@@ -224,7 +244,7 @@ export default {
         }
       })
     },
-    generateExtensions () {
+    generateExtensions() {
       let extensions = []
       for (let extension of this.extensions) {
         if (typeof extension === 'string') {
@@ -259,6 +279,12 @@ export default {
             case 'Link':
               extension = new DynamicClass('OLink')
               break
+            case 'OwlieImageDrag':
+              const uploadFunction = () => {
+                return 'http://placehold.it/900x350'
+              }
+
+              extension = new OwlieImageDrag({ uploadFunction })
             default:
               try {
                 extension = new DynamicClass(extension)
@@ -273,7 +299,7 @@ export default {
       return extensions
     },
     // content
-    getContent () {
+    getContent() {
       let content = this.content || ''
       if (content && content.type) {
         return content // parsed json
@@ -286,41 +312,40 @@ export default {
         }
       }
     },
-    setContent () {
+    setContent() {
       this.editor.setContent(this.getContent(), true)
 
       // Focus
       this.editor.focus()
     },
-    cleanContent () {
+    cleanContent() {
       this.editor.clearContent(false)
       this.editor.focus()
     },
-    onScroll (scroll) {
+    onScroll(scroll) {
       this.$emit('scroll', scroll)
     },
-    showSidePanel () {},
-    onSlideShow () {}
+    showSidePanel() {},
+    onSlideShow() {}
   },
   watch: {
-    editable (to, from) {
+    editable(to, from) {
       this.editor.options.editable = to
     },
-    content (to, from) {
+    content(to, from) {
       this.setContent()
     }
   },
   mounted: function () {
     this.initEditor()
   },
-  deactivated () {
-  },
-  beforeDestroy () {
+  deactivated() {},
+  beforeDestroy() {
     this.editor.destroy()
   }
 }
 </script>
 
 <style lang="stylus">
-  @import "../css/tiptap.styl";
+@import "../css/tiptap.styl";
 </style>

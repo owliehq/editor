@@ -2,11 +2,12 @@ import Vue from 'vue'
 import { getLang } from 'src/i18n'
 
 export default {
-  install ($o, language) {
+  install($o, language) {
     this.set = (language) => {
       language = language || this.getLocale()
 
       let lang = getLang(language)
+
       lang.set = this.set
       lang.getLocale = this.getLocale
 
@@ -24,7 +25,7 @@ export default {
 
     this.set(language)
   },
-  getLocale () {
+  getLocale() {
     let val =
       navigator.language ||
       navigator.languages[0] ||

@@ -1,21 +1,8 @@
 <template>
   <q-page class="page-quasar-tiptap-basic">
     <section class="row col-12 justify-center">
-      <header class="row col-12 justify-center items-center bg-blue-1 text-blue banner">
-        <span class="text-h3">Basic</span>
-
-        <div class="row col-12 options">
-          <q-toggle v-model="options.editable" label="Editable" />
-          <q-toggle v-model="options.showToolbar" label="Toolbar" />
-          <q-toggle v-model="options.showBubble" label="Menu Bubble" />
-        </div>
-      </header>
       <section class="row col-10 q-pa-md">
-        <quasar-tiptap ref="editor" v-bind="options" @update="onUpdate">
-          <div slot="footer">
-            This is footer.
-          </div>
-        </quasar-tiptap>
+        <quasar-tiptap ref="editor" v-bind="options" @update="onUpdate" />
       </section>
     </section>
   </q-page>
@@ -23,20 +10,15 @@
 
 <script>
 import { QuasarTiptap } from 'src/index'
-import {
-  Placeholder,
-} from 'tiptap-extensions'
+import { Placeholder } from 'tiptap-extensions'
 
-import { RecommendedExtensions } from 'src/extentions'
-import { BasicFeaturesArticle, BasicFeaturesArticleJson } from 'src/data/article'
+import { BasicFeaturesArticle } from 'src/data/article'
 
 import OLinkBtn from 'src/components/buttons/OLinkBtn'
 
-import { DEFAULT_LOCALE } from 'src/i18n'
-
 export default {
   name: 'page-quasar-tiptap-basic',
-  data () {
+  data() {
     return {
       options: {
         content: BasicFeaturesArticle,
@@ -59,6 +41,8 @@ export default {
           'HorizontalRule',
           'Table',
           'Link',
+
+          'OwlieImageDrag',
 
           // QuasarTipTap
           // 'OTitle',
@@ -83,23 +67,17 @@ export default {
           'OEmbed',
           new Placeholder({
             showOnlyCurrent: false,
-            emptyNodeText: node => {
+            emptyNodeText: (node) => {
               if (node.type.name === 'title') {
                 return 'Title'
               }
               return 'Content'
             }
-          }),
+          })
         ],
-        tableToolbar: [
-          'bold',
-          'italic',
-          'table',
-          'font-family',
-          'fore-color',
-          'back-color'
-        ],
-        toolbar: [ // 1.name 2.object 3.component
+        tableToolbar: ['bold', 'italic', 'table', 'font-family', 'fore-color', 'back-color'],
+        toolbar: [
+          // 1.name 2.object 3.component
           {
             name: 'add-more', // use object with options
             type: 'menu',
@@ -121,11 +99,7 @@ export default {
             name: 'text-format-dropdown',
             type: 'menu',
             options: {
-              list: [
-                'underline',
-                'strike',
-                'code',
-              ]
+              list: ['underline', 'strike', 'code']
             }
           },
           'separator',
@@ -149,7 +123,7 @@ export default {
           'photo',
           'table',
           'separator',
-          'print',
+          'print'
         ],
         bubble: [
           'bold',
@@ -161,7 +135,7 @@ export default {
           'separator',
           'link',
           'separator',
-          'align-group',
+          'align-group'
         ]
       },
       json: '',
@@ -173,50 +147,46 @@ export default {
     OLinkBtn
   },
   methods: {
-    onUpdate ({ state, getJSON, getHTML }) {
+    onUpdate({ state, getJSON, getHTML }) {
       this.json = getJSON()
       this.html = getHTML()
       console.log('html', this.html)
+
       // console.log('json', JSON.stringify(this.json))
     }
   },
-  mounted () {
+  mounted() {
     this.$o.lang.set('fr-FR')
     // console.log('editor', this.$refs.editor.editor)
   },
-  deactivated () {
-  },
-  beforeDestroy () {
-  }
+  deactivated() {},
+  beforeDestroy() {}
 }
 </script>
 
 <style lang="stylus">
-  .page-quasar-tiptap-basic {
-    .banner {
-      position relative
-      height 100px
-
-      .options {
-        position absolute
-        bottom 0
-        height 40px
-        padding 0 1rem
-      }
-    }
-
-    .tiptap {
-      border solid 1px #eeeeee
-      border-radius 6px
-    }
-
-    .editor-scroll-area {
-      position absolute
-      top 40px
-      left 0
-      right 0
-      bottom 0
-      background #f7f8fa
+.page-quasar-tiptap-basic {
+  .banner {
+    .options {
+      position: absolute;
+      bottom: 0;
+      height: 40px;
+      padding: 0 1rem;
     }
   }
+
+  .tiptap {
+    border: solid 1px #eeeeee;
+    border-radius: 6px;
+  }
+
+  .editor-scroll-area {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #f7f8fa;
+  }
+}
 </style>

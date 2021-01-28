@@ -5,7 +5,7 @@ export const $o = {
 }
 
 export default function (Vue, opts = {}) {
-  const cfg = $o.config = Object.freeze(opts.config || {})
+  const cfg = ($o.config = Object.freeze(opts.config || {}))
 
   // required plugins
   Lang.install($o, opts.language)

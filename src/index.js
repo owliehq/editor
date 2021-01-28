@@ -9,10 +9,8 @@ const QuasarTiptapPlugin = {
   installed: false,
   spellcheck: true,
 
-  install (Vue, opts = {}) {
-    this.spellcheck = opts.spellcheck === null
-      ? true
-      : opts.spellcheck
+  install(Vue, opts = {}) {
+    this.spellcheck = opts.spellcheck === null ? true : opts.spellcheck
     Vue.prototype.$o.lang.set(opts.language)
 
     // quasar-tiptap
@@ -20,13 +18,10 @@ const QuasarTiptapPlugin = {
     Vue.prototype.$quasarTiptapPlugin = this
 
     this.installed = true
-  },
+  }
 }
 
 export * from 'src/extentions/index'
 export * from 'src/components/index'
 
-export {
-  QuasarTiptapPlugin,
-  QuasarTiptap,
-}
+export { QuasarTiptapPlugin, QuasarTiptap }

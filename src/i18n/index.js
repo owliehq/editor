@@ -7,7 +7,7 @@ import lang_fr from './fr-FR'
 const langList = {
   'en-us': lang_enUS,
   // eslint-disable-next-line quote-props
-  'pl': lang_pl,
+  pl: lang_pl,
   'zh-hans': lang_zhHans,
   'pt-br': lang_ptBr,
   // eslint-disable-next-line quote-props
@@ -15,7 +15,7 @@ const langList = {
 }
 
 // use this const as initial language setting in demo/testing purposes (should be dynamic BTW, currently it comes from quasar.conf.js):
-export const DEFAULT_LOCALE = process.env.DEFAULT_LOCALE || 'en-us'
+export const DEFAULT_LOCALE = 'en-us'
 const defaultLang = langList[DEFAULT_LOCALE]
 
 export const getLang = (language) => {
