@@ -121,8 +121,6 @@ export default class ImageDrag extends Node {
                 /image/i.test(file.type)
               )
 
-              console.log('images', images)
-
               if (images.length === 0) {
                 return
               }

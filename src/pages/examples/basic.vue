@@ -21,6 +21,9 @@ export default {
         editable: true,
         showToolbar: true,
         showBubble: true,
+        async uploadCallback() {
+          return 'http://placehold.it/900x350'
+        },
         extensions: [
           // TipTap
           'Bold',
@@ -146,7 +149,7 @@ export default {
     onUpdate({ state, getJSON, getHTML }) {
       this.json = getJSON()
       this.html = getHTML()
-      console.log('html', this.html)
+      //console.log('html', this.html)
 
       // console.log('json', JSON.stringify(this.json))
     }

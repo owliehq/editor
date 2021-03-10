@@ -98,7 +98,7 @@ import {
   OKatexInline,
   OFormatClear,
   OPrint,
-  OImage,
+  //OImage,
   OEmbed,
   RecommendedExtensions,
   OwlieImageDrag
@@ -179,6 +179,12 @@ export default {
       type: Object,
       default: function () {
         return {}
+      }
+    },
+    uploadCallback: {
+      type: Function,
+      default: function () {
+        return ''
       }
     }
   },
@@ -280,15 +286,14 @@ export default {
               extension = new DynamicClass('OLink')
               break
             case 'OwlieImageDrag':
-              const uploadFunction = () => {
-                return 'http://placehold.it/900x350'
-              }
+              console.log(this.uploadCallback)
 
-              extension = new OwlieImageDrag({ uploadFunction })
+              extension = new OwlieImageDrag({ uploadFunction: this.uploadCallback })
             default:
               try {
                 extension = new DynamicClass(extension)
               } catch (e) {
+                //console.log(extention)
                 console.error(e.message)
               }
               break
