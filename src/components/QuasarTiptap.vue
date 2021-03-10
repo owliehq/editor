@@ -287,6 +287,7 @@ export default {
               break
             case 'OwlieImageDrag':
               extension = new OwlieImageDrag({ uploadFunction: this.uploadCallback })
+              break
             default:
               try {
                 extension = new DynamicClass(extension)
